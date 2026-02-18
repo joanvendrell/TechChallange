@@ -6,4 +6,5 @@ pint==0.23
 
 meshio==5.3.5
 pyvista==0.43.4
+vtk==9.2.6
 gmsh==4.11.1
