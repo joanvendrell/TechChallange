@@ -15,6 +15,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
+  
 
   // NEW: track current job + cancellation
   const currentJobIdRef = useRef(null);
@@ -25,7 +26,8 @@ export default function App() {
     response?.result?.artifacts?.find((a) => a.name.endsWith(".vtp"))?.url ??
     response?.result?.artifacts?.[0]?.url;
 
-  const fullUrl = artifactUrl ? `http://127.0.0.1:8000${artifactUrl}` : null;
+  const API_BASE = "https://techchallenge3-s0p9.onrender.com"; // import.meta.env.VITE_API_BASE || "http://localhost:8000";
+  const fullUrl = artifactUrl ? `${API_BASE}${artifactUrl}` : null;
 
   const defaultFieldForJob = (job) => {
     if (!job) return "temperature";
