@@ -11,7 +11,7 @@ export default defineConfig({
   },
   build: {
   commonjsOptions: {
-    transformMixedEsModules: true, //include: ["@kitware/vtk.js"],
+    transformMixedEsModules: { transformMixedEsModules: true }, //include: ["@kitware/vtk.js"],
     },
   }
 });
