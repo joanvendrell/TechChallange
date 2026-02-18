@@ -1,69 +1,85 @@
 {
-  "domain": "solid_mechanics",
-  "pde": "linear_elasticity",
+  "domain": "heat_transfer",
+  "pde": "steady_heat",
   "geometry": {
-    "type": "sphere",
+    "type": "box",
     "dims": {
-      "L": 0.1,
-      "W": 0.01,
-      "H": 0.01,
-      "Lz": 2.0,
-      "R": 2.0
+      "Lx": 5.0,
+      "Ly": 5.0,
+      "Lz": 1.0
     }
   },
   "material": {
-    "name": "steel",
+    "name": "aluminum",
     "props": {
-      "E": 200000000000.0,
-      "nu": 0.3
+      "k": 205.0
     }
   },
   "bc": {
     "kind": {
-      "type": "cantilever_tip_load",
-      "fixed_end": "x=0",
-      "load_end": "x=L",
-      "F": 1000.0,
-      "direction": "down"
+      "type": "dirichlet_lr",
+      "T_left": 500.0,
+      "T_right": 300.0
     }
   },
   "mesh": {
     "resolution": "auto",
     "params": {
-      "nx": 60,
-      "ny": 10,
-      "nz": 10
+      "nx": 40,
+      "ny": 40,
+      "nz": 2
     }
   },
   "outputs": [
-    "displacement",
-    "von_mises"
+    "temperature"
   ],
   "units": "SI",
   "extracted": {
     "entities": {
       "quantities": [
         [
-          2.0,
+          5.0,
           "length",
-          "2 m",
+          "5 m",
           "m"
         ],
         [
-          1000.0,
-          "force",
-          "1000 N",
-          "N"
+          5.0,
+          "length",
+          "5 m",
+          "m"
+        ],
+        [
+          1.0,
+          "length",
+          "1 m",
+          "m"
+        ],
+        [
+          500.0,
+          "temperature",
+          "500 K",
+          "K"
+        ],
+        [
+          300.0,
+          "temperature",
+          "300 K",
+          "K"
         ]
       ],
-      "material": "steel",
-      "geom_hint": "sphere"
-    }
+      "material": "aluminum",
+      "geom_hint": null
+    },
+    "mapped_lengths_m": [
+      1.0,
+      5.0,
+      5.0
+    ],
+    "thickness_m": 1.0
   },
   "warnings": [
-    "Assuming beam geometry L=0.1m, W=0.01m, H=0.01m (override recommended).",
-    "Reused previous setup; applied updates from follow-up prompt.",
-    "Reused previous setup; applied updates from follow-up prompt."
+    "Mapped 3+ length values to (Lx, Ly, Lz) = (largest, middle, smallest)."
   ],
   "clarifying_questions": []
 }
