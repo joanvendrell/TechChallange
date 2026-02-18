@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 export async function createJob(payload) {
   const res = await fetch(`${API_BASE}/api/simulate`, {
@@ -7,17 +7,18 @@ export async function createJob(payload) {
     body: JSON.stringify(payload),
   });
   if (!res.ok) throw new Error(await res.text());
-  return res.json(); // { job_id, status, message }
+  return res.json();
 }
 
 export async function getJob(jobId) {
   const res = await fetch(`${API_BASE}/api/jobs/${jobId}`);
   if (!res.ok) throw new Error(await res.text());
-  return res.json(); // JobDetail
+  return res.json();
 }
 
-export async function cancelJob(job_id) {
-  const res = await fetch(`http://127.0.0.1:8000/jobs/${job_id}/cancel`, {
+export async function cancelJob(jobId) {
+  // ✅ use same base + consistent /api prefix
+  const res = await fetch(`${API_BASE}/api/jobs/${jobId}/cancel`, {
     method: "POST",
   });
   if (!res.ok) {
