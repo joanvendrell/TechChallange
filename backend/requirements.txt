@@ -4,5 +4,14 @@ pydantic==2.6.3
 spacy==3.7.4
 pint==0.23
 meshio==5.3.5
+numpy==1.26.4
+mpi4py==3.1.6
+gmsh==4.12.2
+meshio==5.3.5
+pyvista==0.43.3
+petsc4py==3.20.5
+fenics-basix==0.8.0
+fenics-ufl==2024.1.0
+
 
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
