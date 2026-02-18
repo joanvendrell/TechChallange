@@ -7,7 +7,7 @@ export default defineConfig({
     port: 5173
   },
   optimizeDeps: {
-    include: ["@kitware/vtk.js"],
+    include: ["@kitware/vtk.js", "globalthis"],
   },
   build: {
   commonjsOptions: {
